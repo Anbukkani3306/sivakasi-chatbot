@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sivakasi PDF Chatbot (Gemini)</title>
+  <!-- ✅ Link to external CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h2>Ask Me Anything About Sivakasi (from PDF)</h2>
+  <form id="chat-form">
+    <input type="text" id="message" placeholder="Ask a question..." required />
+    <button type="submit">Send</button>
+  </form>
+  <div id="chat-box"></div>
+
+  <script>
+    const form = document.getElementById('chat-form');
+    const chatBox = document.getElementById('chat-box');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const userMessage = document.getElementById('message').value;
+      chatBox.innerHTML += `<div class="msg left"><b>You:</b> ${userMessage}</div>`;
+      document.getElementById('message').value = "";
+
+      const res = await fetch("/chat", {
+        method: "POST",
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({ message: userMessage })
+      });
+      const data = await res.json();
+      chatBox.innerHTML += `<div class="msg right"><b>Bot:</b> ${data.response}</div>`;
+    });
+  </script>
+</body>
+</html>
