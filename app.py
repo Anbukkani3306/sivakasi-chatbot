@@ -43,7 +43,7 @@ def generate_gemini_response(question, chunks):
 # -------------------------------
 # Load PDF once when app starts
 # -------------------------------
-PDF_PATH = "sivakasi _chatbot_info.pdf"  # ✅ make sure this file is in the same folder
+PDF_PATH = "sivakasi_chatbot_info.pdf"  # ✅ make sure this file is in the same folder
 pdf_text = extract_text_from_pdf(PDF_PATH)
 pdf_chunks = chunk_text(pdf_text)
 
