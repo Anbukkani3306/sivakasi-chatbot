@@ -60,5 +60,8 @@ def chat():
     reply = generate_gemini_response(user_message, pdf_chunks)
     return jsonify({"response": reply})
 
+#@if __name__ == "__main__":#
+#    app.run(debug=True)#
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+
