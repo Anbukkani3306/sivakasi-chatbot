@@ -7,7 +7,11 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  <h2>Ask Me Anything About Sivakasi (from PDF)</h2>
+  <h2>Ask Me Anything About Sivakasi </h2>
+  <form action="/logout" method="GET" class="logout-form">
+  <button type="submit" class="logout-button">Logout</button>
+</form>
+
   <form id="chat-form">
     <input type="text" id="message" placeholder="Ask a question..." required />
     <button type="submit">Send</button>
